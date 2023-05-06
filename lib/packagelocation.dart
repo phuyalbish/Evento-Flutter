@@ -4,7 +4,9 @@ export 'package:evento_firsttry/views/navbar.dart';
 export 'package:evento_firsttry/views/home.dart';
 
 export 'package:evento_firsttry/landingpage.dart';
-export 'package:evento_firsttry/loginpage.dart';
+export 'package:evento_firsttry/outerviews/loginpage.dart';
+export 'package:evento_firsttry/outerviews/signinpage.dart';
+export 'package:evento_firsttry/outerviews/descriptionpage.dart';
 
 export 'package:evento_firsttry/views/notifications.dart';
 export 'package:evento_firsttry/views/profile.dart';
