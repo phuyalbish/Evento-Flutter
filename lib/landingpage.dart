@@ -8,9 +8,12 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  bool isLoginPageVisible = true;
-  bool isSignInPageVisible = true;
+  bool isLoginPageVisible = false;
+  bool isSignInPageVisible = false;
   bool isDescriptionVisible = true;
+  bool isLoginbuttonVisible = true;
+  bool isSigninbuttonVisible = true;
+  bool isCancelbuttonVisible = false;
   @override
   Widget build(BuildContext context) {
     // LoginOrNot loginObject =
@@ -25,7 +28,7 @@ class _LandingPageState extends State<LandingPage> {
         body: SafeArea(
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
               child: Column(
                 children: [
                   Container(
@@ -40,46 +43,90 @@ class _LandingPageState extends State<LandingPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text("Lions Club of Kathmandu"),
+                  const Text(
+                    "Lions Club of Kathmandu",
+                    style: TextStyle(color: Colors.white, fontSize: 25),
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text("Love all Serve all"),
+                  const Text("Love all Serve all",
+                      style: TextStyle(color: Colors.blue, fontSize: 18)),
                   const SizedBox(
                     height: 10,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              isLoginPageVisible = true;
-                              isSignInPageVisible = false;
-                            });
-                          },
-                          style: const ButtonStyle(),
-                          child: const Text("Login")),
-                      const SizedBox(
-                        width: 10,
+                      Visibility(
+                        visible: isLoginbuttonVisible,
+                        child: Row(
+                          children: [
+                            ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isLoginPageVisible = true;
+                                    isSignInPageVisible = false;
+                                    isDescriptionVisible = false;
+                                    isSigninbuttonVisible = true;
+                                    isCancelbuttonVisible = true;
+                                    isLoginbuttonVisible = false;
+                                  });
+                                },
+                                style: const ButtonStyle(),
+                                child: const Text("Login")),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                          ],
+                        ),
                       ),
-                      ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              isLoginPageVisible = false;
-                              isSignInPageVisible = true;
-                            });
-                          },
-                          child: const Text("SignUp")),
+                      Visibility(
+                        visible: isSigninbuttonVisible,
+                        child: Row(
+                          children: [
+                            ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isLoginPageVisible = false;
+                                    isSignInPageVisible = true;
+                                    isDescriptionVisible = false;
+                                    isSigninbuttonVisible = false;
+                                    isCancelbuttonVisible = true;
+                                    isLoginbuttonVisible = true;
+                                  });
+                                },
+                                child: const Text("SignIn")),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Visibility(
+                        visible: isCancelbuttonVisible,
+                        child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                isLoginPageVisible = false;
+                                isSignInPageVisible = false;
+                                isDescriptionVisible = true;
+                                isSigninbuttonVisible = true;
+                                isCancelbuttonVisible = false;
+                                isLoginbuttonVisible = true;
+                              });
+                            },
+                            child: const Text("Cancel")),
+                      ),
                     ],
                   ),
-                  Visibility(
-                      visible: isLoginPageVisible, child: const LoginPage()),
-                  Visibility(
-                      visible: isSignInPageVisible, child: const SignIn()),
-                  Visibility(
-                      visible: isDescriptionVisible,
-                      child: const DescriptionPage()),
+                  // Visibility(
+                  //     // visible: isLoginPageVisible, child: const LoginPage()),
+                  // Visibility(
+                  //     visible: isSignInPageVisible, child: const MyRegister()),
+                  // Visibility(
+                  //     visible: isDescriptionVisible,
+                  //     child: const DescriptionPage()),
                 ],
               ),
             ),

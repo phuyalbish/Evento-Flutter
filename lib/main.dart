@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
     getData();
     Widget str;
     if (logstatus?[0].loggedinornot == "false") {
-      str = const LandingPage();
+      str = const MyLogin();
     } else {
       str = const Navbar();
     }

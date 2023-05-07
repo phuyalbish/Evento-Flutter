@@ -7,6 +7,7 @@ export 'package:evento_firsttry/landingpage.dart';
 export 'package:evento_firsttry/outerviews/loginpage.dart';
 export 'package:evento_firsttry/outerviews/signinpage.dart';
 export 'package:evento_firsttry/outerviews/descriptionpage.dart';
+export 'package:evento_firsttry/outerviews/gender.dart';
 
 export 'package:evento_firsttry/views/notifications.dart';
 export 'package:evento_firsttry/views/profile.dart';
